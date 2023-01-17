@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/my-magikarp-manager.iml" filepath="$PROJECT_DIR$/.idea/my-magikarp-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../magidex/.idea/magidex.iml" filepath="$PROJECT_DIR$/../magidex/.idea/magidex.iml" />
     </modules>
   </component>
 </project>
