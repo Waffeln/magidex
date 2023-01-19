@@ -3,10 +3,13 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PokeList from "./components/PokeList";
 import FavouritePokeList from "./components/FavouritePokeList";
+import { createTheme, ThemeProvider } from "@mui/material";
+import theme from "./theme";
 
 function App() {
+	const appTheme = createTheme(theme);
 	return (
-		<div>
+		<ThemeProvider theme={appTheme}>
 			<BrowserRouter>
 				<Routes>
 					<Route path={"/"} element={<div>
@@ -16,7 +19,7 @@ function App() {
 					<Route path={"/favourite"} element={<FavouritePokeList />}/>
 				</Routes>
 			</BrowserRouter>
-		</div>
+		</ThemeProvider>
 	);
 }
 
