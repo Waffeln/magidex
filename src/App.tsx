@@ -6,6 +6,7 @@ import FavouritePokeList from "./components/FavouritePokeList";
 import { createTheme, ThemeProvider} from "@mui/material";
 import theme from "./theme";
 import { AppContextProvider} from "./context/AppContext";
+import PokeDetails from "./components/PokeDetails";
 
 function App() {
 	const appTheme = createTheme(theme);
@@ -14,12 +15,13 @@ function App() {
 		<>
 			<AppContextProvider>
 				<ThemeProvider theme={appTheme}>
+					<PokeList />
 					<BrowserRouter>
 						<Routes>
 							<Route path={"/"} element={<div>
 								filler
 							</div>}/>
-							<Route path={"/pokelist"} element={<PokeList />} />
+							<Route path={"/pokedetails"} element={<PokeDetails />} />
 							<Route path={"/favourite"} element={<FavouritePokeList />}/>
 						</Routes>
 					</BrowserRouter>

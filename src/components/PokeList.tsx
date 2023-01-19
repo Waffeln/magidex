@@ -1,10 +1,11 @@
-import React from "react";
+import React, {} from "react";
+import Sidebar from "../ui_components/Sidebar";
 
 const PokeList = ()=> {
 
 	return (
 		<>
-			PokeList
+			<Sidebar headerContent={<>header</>}> body </Sidebar>
 		</>
 	);
 };
