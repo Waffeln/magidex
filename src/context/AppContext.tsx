@@ -1,13 +1,17 @@
 import React, {createContext, useState} from "react";
 
+interface PokeFilterType {
+	[PokeFilterName: string]: string
+}
+
 const AppContext = createContext<any>(undefined);
 
 const AppContextProvider: React.FC<any> = ({ children }) => {
-	const [pokeNameList, setPokeNameList] = useState<string[]>([]);
+	const [activeFilterArray, setActiveFilterArray] = useState<PokeFilterType[]>([]);
 
 	const value={
-		pokeNameList,
-		setPokeNameList
+		activeFilterArray,
+		setActiveFilterArray
 	};
 
 	return (

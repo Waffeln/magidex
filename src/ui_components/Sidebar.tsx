@@ -14,7 +14,7 @@ const Sidebar = (props: SidebarProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const drawerStyle = {
 		height: "100%",
-		width: "250px",
+		width: "350px",
 		zIndex: 105,
 		...props.sx
 	};
@@ -45,7 +45,7 @@ const Sidebar = (props: SidebarProps) => {
 					paddingTop: "50px",
 					paddingLeft: "10px",
 					minHeight: "15%",
-					backgroundColor: "#ffa844"
+					backgroundColor: "#ddd"
 				}}>
 					{props.headerContent}
 				</Box>
