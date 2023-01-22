@@ -42,7 +42,6 @@ const PokeList = ()=> {
 			Promise.all(pokePromiseArray).then((value: Pokemon[]) => {
 				value.forEach((el: Pokemon) => {
 					result.push(el);
-					console.log(el);
 				});
 				setFilteredPokeList(result);
 			});
