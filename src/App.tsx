@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PokeList from "./components/PokeList";
 import FavouritePokeList from "./components/FavouritePokeList";
-import { createTheme, ThemeProvider} from "@mui/material";
+import { createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 import theme from "./theme";
 import { AppContextProvider} from "./context/AppContext";
 import PokeDetails from "./components/PokeDetails";
@@ -16,6 +16,7 @@ function App() {
 		<>
 			<AppContextProvider>
 				<ThemeProvider theme={appTheme}>
+					<CssBaseline />
 					<PokeList />
 					<BrowserRouter>
 						<Routes>

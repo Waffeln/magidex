@@ -1,4 +1,20 @@
 const theme = {
+	components: {
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					backgroundColor: "#ff8200"
+				}
+			}
+		},
+		MuiCssBaseline: {
+			styleOverrides: {
+				body: {
+					backgroundColor: "rgba(255,153,19, 0.35)"
+				}
+			}
+		}
+	},
 	palette: {
 		primary: {
 			main: "#ff8200"
