@@ -1,6 +1,6 @@
 import React from "react";
 import {Pokemon} from "pokedex-promise-v2";
-import {Box, IconButton} from "@mui/material";
+import {Box, IconButton, Link} from "@mui/material";
 import theme from "../theme";
 import types from "../assets/typeColor.json";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -15,11 +15,12 @@ interface typesJsonType {
 }
 
 const PokeListItem = (props: PokeListItemProps)=> {
+	console.log(props.pokemon);
 	const typeJson: typesJsonType = types;
 	return (
 		<Box sx={{
-			height: "80px",
-			width: "250px",
+			height: "105px",
+			width: "98%",
 			padding: "5px",
 			border: "3px solid",
 			borderColor: theme.palette.primary.main,
@@ -37,7 +38,9 @@ const PokeListItem = (props: PokeListItemProps)=> {
 					<FavoriteBorderIcon />
 				</IconButton>
 				<IconButton>
-					<CropFreeIcon />
+					<Link href={"/pokedetails/" + props.pokemon.name}>
+						<CropFreeIcon />
+					</Link>
 				</IconButton>
 			</Box>
 

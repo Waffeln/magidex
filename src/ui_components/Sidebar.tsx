@@ -31,7 +31,9 @@ const Sidebar = (props: SidebarProps) => {
 					padding: "20px",
 					height: "50px",
 					width: "50px",
-					zIndex: 110
+					zIndex: 110,
+					backgroundColor: "#ddd",
+					borderRadius: 0,
 				}}
 			>
 				{isOpen ? <ArrowBackIosNewIcon/> : <ArrowForwardIosIcon/>}
@@ -42,7 +44,7 @@ const Sidebar = (props: SidebarProps) => {
 				}
 			}}>
 				<Box sx={{
-					paddingTop: "50px",
+					paddingTop: "65px",
 					paddingLeft: "10px",
 					minHeight: "15%",
 					backgroundColor: "#ddd"

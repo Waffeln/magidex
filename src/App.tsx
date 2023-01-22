@@ -17,8 +17,8 @@ function App() {
 			<AppContextProvider>
 				<ThemeProvider theme={appTheme}>
 					<CssBaseline />
-					<PokeList />
 					<BrowserRouter>
+						<PokeList />
 						<Routes>
 							<Route path={"/"} element={<div>
 								filler
