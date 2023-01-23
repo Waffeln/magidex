@@ -3,14 +3,18 @@ const theme = {
 		MuiButton: {
 			styleOverrides: {
 				root: {
-					backgroundColor: "#ff8200"
+					backgroundColor: "#ff8200",
+					color: "#fff",
+					"&:hover": {
+						backgroundColor: "#777"
+					},
 				}
 			}
 		},
 		MuiCssBaseline: {
 			styleOverrides: {
 				body: {
-					backgroundColor: "rgba(255,153,19, 0.35)"
+					backgroundColor: "rgba(255,153,19, 0.35)",
 				}
 			}
 		}
