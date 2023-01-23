@@ -28,6 +28,8 @@ const Sidebar = (props: SidebarProps) => {
 			<IconButton
 				onClick={handleDrawerOpen}
 				sx={{
+					top:"0px",
+					position: "absolute",
 					padding: "20px",
 					height: "50px",
 					width: "50px",
@@ -46,8 +48,8 @@ const Sidebar = (props: SidebarProps) => {
 				<Box sx={{
 					paddingTop: "65px",
 					paddingLeft: "10px",
-					minHeight: "15%",
-					backgroundColor: "#ddd"
+					minHeight: "140px",
+					backgroundColor: "#ddd",
 				}}>
 					{props.headerContent}
 				</Box>

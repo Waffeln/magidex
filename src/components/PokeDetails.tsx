@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { useParams} from "react-router-dom";
-import {Box, Button, ButtonGroup, Grid, Paper, SxProps} from "@mui/material";
+import {Box, Button, Grid, Paper, SxProps} from "@mui/material";
 import PokeNotFound from "./PokeNotFound";
 import Pokedex, {EvolutionChain, Pokemon} from "pokedex-promise-v2";
 
@@ -61,6 +61,7 @@ const PokeDetails = ()=> {
 		Promise.all([pokeDex.getEvolutionChainById(focusedPokemen.id)]).then((value: EvolutionChain[]) => {
 			setEvolutionChain(value[0]);
 			console.log(value[0]);
+			console.log(focusedPokemen);
 		});
 	}, [focusedPokemen]);
 

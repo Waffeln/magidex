@@ -38,7 +38,7 @@ const PokeListItem = (props: PokeListItemProps)=> {
 					<FavoriteBorderIcon />
 				</IconButton>
 				<IconButton>
-					<Link href={"/pokedetails/" + props.pokemon.name}>
+					<Link title={"Get more info about " + props.pokemon.name + "!"} href={"/pokedetails/" + props.pokemon.name}>
 						<CropFreeIcon />
 					</Link>
 				</IconButton>
