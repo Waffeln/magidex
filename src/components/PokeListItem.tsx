@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Pokemon} from "pokedex-promise-v2";
 import {Box, IconButton, Link} from "@mui/material";
 import theme from "../theme";
 import types from "../assets/typeColor.json";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CropFreeIcon from "@mui/icons-material/CropFree";
+import {AppContext} from "../context/AppContext";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 interface PokeListItemProps {
 	pokemon: Pokemon
@@ -15,7 +17,7 @@ interface typesJsonType {
 }
 
 const PokeListItem = (props: PokeListItemProps)=> {
-	console.log(props.pokemon);
+	const appContext = useContext(AppContext);
 	const typeJson: typesJsonType = types;
 	return (
 		<Box sx={{
@@ -34,8 +36,14 @@ const PokeListItem = (props: PokeListItemProps)=> {
 					width:"60px", textAlign: "center", borderRadius: "8px", marginBottom: "5px" }} key={el.type.name}> {el.type.name.toUpperCase()} </Box>)}
 			</Box>
 			<Box sx={{ textAlign: "right"}}>
-				<IconButton >
-					<FavoriteBorderIcon />
+				<IconButton onClick={()=> {
+					appContext.favouritePokeNameArray.includes(props.pokemon.name) ?
+						appContext.favouritePokeNameArray.splice(appContext.favouritePokeNameArray.indexOf(props.pokemon.name),1)
+						: appContext.favouritePokeNameArray.push(props.pokemon.name);
+					console.log(appContext.favouritePokeNameArray);
+				}
+				}>
+					{appContext.favouritePokeNameArray.includes(props.pokemon.name) ? <FavoriteIcon sx={{color: "#f77"}} /> : <FavoriteBorderIcon/>}
 				</IconButton>
 				<IconButton>
 					<Link title={"Get more info about " + props.pokemon.name + "!"} href={"/pokedetails/" + props.pokemon.name}>
