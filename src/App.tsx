@@ -8,6 +8,7 @@ import theme from "./theme";
 import { AppContextProvider} from "./context/AppContext";
 import PokeDetails from "./components/PokeDetails";
 import PokeNotFound from "./components/PokeNotFound";
+import Home from "./components/Home";
 
 function App() {
 	const appTheme = createTheme(theme);
@@ -20,9 +21,7 @@ function App() {
 					<BrowserRouter>
 						<PokeList />
 						<Routes>
-							<Route path={"/"} element={<div>
-								filler
-							</div>}/>
+							<Route path={"/"} element={<Home />} />
 							<Route path={"/pokedetails"} element={<PokeNotFound />} />
 							<Route path={"/pokedetails/:pokename"} element={<PokeDetails />} />
 							<Route path={"/favourite"} element={<FavouritePokeList />}/>

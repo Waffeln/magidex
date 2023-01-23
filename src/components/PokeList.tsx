@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState} from "react";
 import Sidebar from "../ui_components/Sidebar";
 import {AppContext} from "../context/AppContext";
-import Pokedex, {PokedexName, Pokemon, PokemonEntry} from "pokedex-promise-v2";
-import {List, ListItem, TextField} from "@mui/material";
+import Pokedex, { Pokemon, PokemonEntry} from "pokedex-promise-v2";
+import {Box, Button, List, ListItem, TextField} from "@mui/material";
 import PokeListItem from "./PokeListItem";
 
 const PokeList = ()=> {
@@ -57,7 +57,11 @@ const PokeList = ()=> {
 	return (
 		<>
 			<Sidebar headerContent={<>
-				<TextField id="search-pokemon-text-field" label="Pokemon name..." variant="outlined" onChange={event => setSearchInput(event.target.value)}/>
+				<Box sx={{position: "fixed", top:"5px", left: "100px", display: "flex", fontSize: "1.2em", gap: "10px"}}>
+					<Button href={"/"}>Home</Button>
+					<Button href={"favourite"}>Favourites</Button>
+				</Box>
+				<TextField id="search-pokemon-text-field" label="Pokemon name..." variant="outlined" sx={{marginLeft: "20px"}} onChange={event => setSearchInput(event.target.value)}/>
 			</>}>
 				<List sx={{display: "flex", flexDirection: "column"}}>
 					{filteredPokeList.map((el) => (
