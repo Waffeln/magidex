@@ -1,5 +1,5 @@
-import React, {useContext, useState} from "react";
-import {Box, List} from "@mui/material";
+import React, {useContext, useEffect, useState} from "react";
+import {Box, Grid, List} from "@mui/material";
 import {AppContext} from "../context/AppContext";
 import PokeListItem from "./PokeListItem";
 import Pokedex, {Pokemon} from "pokedex-promise-v2";
@@ -8,18 +8,22 @@ const FavouritePokeList = ()=> {
 	const appContext = useContext(AppContext);
 	const [favouritePokeArray, setFavouritePokeArray] = useState<Pokemon[]>([]);
 	const pokeDex = new Pokedex;
-	const promiseArray = appContext.favouritePokeNameArray.map((el: string)=> pokeDex.getPokemonByName(el));
-	Promise.all(promiseArray).then((value: Pokemon[]) => setFavouritePokeArray(value));
+
+	useEffect(()=> {
+		console.log(appContext.favouritePokeNameArray);
+		const promiseArray = appContext.favouritePokeNameArray.map((el: string) => pokeDex.getPokemonByName(el));
+		Promise.all(promiseArray).then((value: Pokemon[]) => setFavouritePokeArray(value));
+	}, [appContext.favouritePokeNameArray]);
 
 	return (
 		<Box sx={ {
-			width: "100%"
+			width: "70%%"
 		}}>
-			<List sx={{margin: "50px", display: "flex", gap: "10px", flexWrap: "wrap", width: "280px"}}>
+			<Grid sx={{margin: "50px", gap: "10px"}} container spacing={1} direction={"row"} >
 				{favouritePokeArray.map((el: Pokemon)=><>
-					<PokeListItem pokemon={el} />
+					<PokeListItem pokemon={el} key={el.name}/>
 				</>)}
-			</List>
+			</Grid>
 		</Box>
 	);
 };

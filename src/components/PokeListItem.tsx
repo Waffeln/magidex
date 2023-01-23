@@ -22,7 +22,7 @@ const PokeListItem = (props: PokeListItemProps)=> {
 	return (
 		<Box sx={{
 			height: "105px",
-			width: "98%",
+			width: "280px",
 			padding: "5px",
 			border: "3px solid",
 			borderColor: theme.palette.primary.main,
@@ -33,13 +33,13 @@ const PokeListItem = (props: PokeListItemProps)=> {
 			<Box sx={{width: "120px"}}>
 				<Box sx={{marginBottom: "10px"}}>{props.pokemon.name.toUpperCase()}</Box>
 				{props.pokemon.types.map((el)=> <Box sx={{ color: "#fff", backgroundColor: typeJson[el.type.name],
-					width:"60px", textAlign: "center", borderRadius: "8px", marginBottom: "5px" }} key={el.type.name}> {el.type.name.toUpperCase()} </Box>)}
+					width:"80px", textAlign: "center", borderRadius: "8px", marginBottom: "5px" }} key={el.type.name}> {el.type.name.toUpperCase()} </Box>)}
 			</Box>
 			<Box sx={{ textAlign: "right"}}>
 				<IconButton onClick={()=> {
 					appContext.favouritePokeNameArray.includes(props.pokemon.name) ?
-						appContext.favouritePokeNameArray.splice(appContext.favouritePokeNameArray.indexOf(props.pokemon.name),1)
-						: appContext.favouritePokeNameArray.push(props.pokemon.name);
+						appContext.setFavouritePokeNameArray(appContext.favouritePokeNameArray.filter((el: string) => el !== props.pokemon.name))
+						: appContext.setFavouritePokeNameArray([...appContext.favouritePokeNameArray, props.pokemon.name]);
 					console.log(appContext.favouritePokeNameArray);
 				}
 				}>
