@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { useParams} from "react-router-dom";
 import {Box, Button, Grid, Paper, SxProps} from "@mui/material";
 import PokeNotFound from "./PokeNotFound";
 import Pokedex, {EvolutionChain, Pokemon} from "pokedex-promise-v2";
+import {AppContext} from "../context/AppContext";
 
 interface PresentationStateType {
 	isShiny: boolean,
@@ -49,6 +50,7 @@ const PokeDetails = ()=> {
 	});
 	const pokeDex = new Pokedex;
 	const params = useParams();
+	const appContext = useContext(AppContext);
 
 	useEffect(()=> {
 		if(params.pokename !== undefined) {
@@ -73,6 +75,10 @@ const PokeDetails = ()=> {
 				<Box sx={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
 					<Box component={"img"}src={(focusedPokemen?.sprites as any)[(presentationState.isFront ? "front" : "back") + "_"
 					+ (presentationState.isShiny ? "shiny" : "default")] as string} sx={imageStyle} />
+					<Box>
+						{focusedPokemen.types.map((el)=> <Box sx={{ color: "#fff", backgroundColor: appContext.typeColorObject[el.type.name],
+							width:"80px", textAlign: "center", borderRadius: "8px", marginBottom: "5px" }} key={el.type.name}> {el.type.name.toUpperCase()} </Box>)}
+					</Box>
 					<Box>
 						Change Sprite view:
 						<br />

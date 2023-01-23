@@ -1,7 +1,12 @@
 import React, {createContext, useEffect, useLayoutEffect, useState} from "react";
+import typeColor from "../assets/typeColor.json";
 
 interface PokeFilterType {
 	[PokeFilterName: string]: string
+}
+
+interface TypeColorType {
+	[typeName: string]: string
 }
 
 const AppContext = createContext<any>(undefined);
@@ -14,6 +19,7 @@ const AppContextProvider: React.FC<any> = ({ children }) => {
 		typeof (JSON.parse(localStorage.favouritePokeNameArray)[0]) === "string" ?
 			JSON.parse(localStorage.favouritePokeNameArray) : []
 	);
+	const typeColorObject: TypeColorType = typeColor;
 
 	useEffect(()=> {
 		if(isInitial) {
@@ -28,6 +34,7 @@ const AppContextProvider: React.FC<any> = ({ children }) => {
 		setActiveFilterArray,
 		favouritePokeNameArray,
 		setFavouritePokeNameArray,
+		typeColorObject
 	};
 
 	return (

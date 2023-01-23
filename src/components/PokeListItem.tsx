@@ -2,7 +2,6 @@ import React, {useContext} from "react";
 import {Pokemon} from "pokedex-promise-v2";
 import {Box, IconButton, Link} from "@mui/material";
 import theme from "../theme";
-import types from "../assets/typeColor.json";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CropFreeIcon from "@mui/icons-material/CropFree";
 import {AppContext} from "../context/AppContext";
@@ -12,13 +11,8 @@ interface PokeListItemProps {
 	pokemon: Pokemon
 }
 
-interface typesJsonType {
-	[typeName: string]: string
-}
-
 const PokeListItem = (props: PokeListItemProps)=> {
 	const appContext = useContext(AppContext);
-	const typeJson: typesJsonType = types;
 	return (
 		<Box sx={{
 			height: "105px",
@@ -32,7 +26,7 @@ const PokeListItem = (props: PokeListItemProps)=> {
 			<Box component={"img"} sx={{height: "90px", width: "90px"}} src={props.pokemon.sprites.front_default as string} />
 			<Box sx={{width: "120px"}}>
 				<Box sx={{marginBottom: "10px"}}>{props.pokemon.name.toUpperCase()}</Box>
-				{props.pokemon.types.map((el)=> <Box sx={{ color: "#fff", backgroundColor: typeJson[el.type.name],
+				{props.pokemon.types.map((el)=> <Box sx={{ color: "#fff", backgroundColor: appContext.typeColorObject[el.type.name],
 					width:"80px", textAlign: "center", borderRadius: "8px", marginBottom: "5px" }} key={el.type.name}> {el.type.name.toUpperCase()} </Box>)}
 			</Box>
 			<Box sx={{ textAlign: "right"}}>

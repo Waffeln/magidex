@@ -1,11 +1,7 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Grid, IconButton, Popover} from "@mui/material";
 import {Tune} from "@mui/icons-material";
-import typeColor from "../assets/typeColor.json";
-
-interface typesJsonType {
-	[typeName: string]: string
-}
+import {AppContext} from "../context/AppContext";
 
 const gridItemStyle = {
 	color: "#fff",
@@ -22,7 +18,7 @@ const gridItemStyle = {
 const FilterPokemon = () => {
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 	const open = Boolean(anchorEl);
-	const typeColorObject: typesJsonType = typeColor;
+	const appContext = useContext(AppContext);
 
 	return (
 		<>
@@ -47,10 +43,11 @@ const FilterPokemon = () => {
 				onClose={()=> setAnchorEl(null)}
 				disableRestoreFocus
 			>
+				Filter by: (WIP)
 				<Grid sx={{
 					width: "360px"
 				}}>
-					{Object.keys(typeColor).map((el: string)=> <IconButton key={el} sx={{...gridItemStyle, backgroundColor: typeColorObject[el]}}>
+					{Object.keys(appContext.typeColorObject).map((el: string)=> <IconButton key={el} sx={{...gridItemStyle, backgroundColor: appContext.typeColorObject[el]}}>
 						{el}
 					</IconButton>)}
 				</Grid>
