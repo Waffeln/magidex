@@ -58,7 +58,7 @@ const PokeList = ()=> {
 	return (
 		<>
 			<Sidebar headerContent={<>
-				<Box sx={{position: "fixed", top:"5px", left: "100px", display: "flex", fontSize: "1.2em", gap: "10px"}}>
+				<Box sx={{position: "absolute", top:"5px", left: "100px", display: "flex", fontSize: "1.2em", gap: "10px"}}>
 					<Button href={"/"}>Home</Button>
 					<Button href={"/favourite"}>Favourites</Button>
 				</Box>
