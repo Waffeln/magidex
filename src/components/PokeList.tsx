@@ -4,6 +4,7 @@ import {AppContext} from "../context/AppContext";
 import Pokedex, { Pokemon, PokemonEntry} from "pokedex-promise-v2";
 import {Box, Button, List, ListItem, TextField} from "@mui/material";
 import PokeListItem from "./PokeListItem";
+import FilterPokemon from "./FilterPokemon";
 
 const PokeList = ()=> {
 	const appContext = useContext(AppContext);
@@ -61,6 +62,7 @@ const PokeList = ()=> {
 					<Button href={"/"}>Home</Button>
 					<Button href={"/favourite"}>Favourites</Button>
 				</Box>
+				<FilterPokemon />
 				<TextField id="search-pokemon-text-field" label="Pokemon name..." variant="outlined" sx={{marginLeft: "20px"}} onChange={event => setSearchInput(event.target.value)}/>
 			</>}>
 				<List sx={{display: "flex", flexDirection: "column"}}>
