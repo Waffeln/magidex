@@ -25,6 +25,7 @@ function App() {
 							<Route path={"/pokedetails"} element={<PokeNotFound />} />
 							<Route path={"/pokedetails/:pokename"} element={<PokeDetails />} />
 							<Route path={"/favourite"} element={<FavouritePokeList />}/>
+							<Route path={"*"} element={<PokeNotFound />} />
 						</Routes>
 					</BrowserRouter>
 				</ThemeProvider>

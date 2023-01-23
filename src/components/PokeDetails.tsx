@@ -102,7 +102,7 @@ const PokeDetails = ()=> {
 							</Grid>))}
 					</Grid>
 				</Box>
-			</Paper> : <PokeNotFound />}
+			</Paper> :  <PokeNotFound pokename={params.pokename} />}
 		</>
 	);
 };
