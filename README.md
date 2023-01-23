@@ -1,3 +1,5 @@
+<img src="https://user-images.githubusercontent.com/17255761/214148956-ee0b76fa-26e8-41b7-81d7-d54002793614.png" alt="MagiDex logo" width="200px"/>
+
 # MagiDex
 
 A small react-web-application based on the [PokeApi](https://pokeapi.co/) .
