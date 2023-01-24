@@ -12,7 +12,7 @@ const footerStyle: SxProps = {
 	position: "absolute",
 	backgroundColor: "#555",
 	height: "50px",
-	zIndex: 200,
+	zIndex: 105,
 	display: "flex",
 	flexDirection: "row",
 	justifyContent: "space-evenly"
