@@ -12,7 +12,8 @@ const FavouritePokeList = ()=> {
 	useEffect(()=> {
 		console.log(appContext.favouritePokeNameArray);
 		const promiseArray = appContext.favouritePokeNameArray.map((el: string) => pokeDex.getPokemonByName(el));
-		Promise.all(promiseArray).then((value: Pokemon[]) => setFavouritePokeArray(value));
+		Promise.all(promiseArray).then((value: Pokemon[]) => setFavouritePokeArray(value)).catch(
+			(error) => appContext.setAlertStatus({type: "error", message: error}));
 	}, [appContext.favouritePokeNameArray]);
 
 	return (

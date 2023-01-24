@@ -46,7 +46,7 @@ const PokeList = ()=> {
 				});
 				setFilteredPokeList(result);
 			});
-		});
+		}).catch((error) => appContext.setAlertStatus({type: "error", message: error}));
 	};
 
 	useEffect(() => {

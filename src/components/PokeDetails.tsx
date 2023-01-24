@@ -54,7 +54,8 @@ const PokeDetails = ()=> {
 
 	useEffect(()=> {
 		if(params.pokename !== undefined) {
-			Promise.all([pokeDex.getPokemonByName(params.pokename)]).then((value: Pokemon[]) => setFocusedPokemon(value[0]));
+			Promise.all([pokeDex.getPokemonByName(params.pokename)]).then((value: Pokemon[]) => setFocusedPokemon(value[0])).catch(
+				(error) => appContext.setAlertStatus({type: "error", message: error}));
 		}
 	}, []);
 
@@ -64,7 +65,7 @@ const PokeDetails = ()=> {
 			setEvolutionChain(value[0]);
 			console.log(value[0]);
 			console.log(focusedPokemen);
-		});
+		}).catch((error) => appContext.setAlertStatus({type: "error", message: error}));
 	}, [focusedPokemen]);
 
 	return (

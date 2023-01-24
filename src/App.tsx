@@ -9,6 +9,7 @@ import { AppContextProvider} from "./context/AppContext";
 import PokeDetails from "./components/PokeDetails";
 import PokeNotFound from "./components/PokeNotFound";
 import Home from "./components/Home";
+import AlertHandler from "./components/AlertHandler";
 
 function App() {
 	const appTheme = createTheme(theme);
@@ -19,6 +20,7 @@ function App() {
 				<ThemeProvider theme={appTheme}>
 					<CssBaseline />
 					<BrowserRouter>
+						<AlertHandler />
 						<PokeList />
 						<Routes>
 							<Route path={"/"} element={<Home />} />

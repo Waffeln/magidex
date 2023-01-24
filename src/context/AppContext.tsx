@@ -5,6 +5,11 @@ interface PokeFilterType {
 	[PokeFilterName: string]: string
 }
 
+interface AlertStatusType {
+	type: string,
+	message: string
+}
+
 interface TypeColorType {
 	[typeName: string]: string
 }
@@ -14,6 +19,7 @@ const AppContext = createContext<any>(undefined);
 const AppContextProvider: React.FC<any> = ({ children }) => {
 	const [activeFilterArray, setActiveFilterArray] = useState<PokeFilterType[]>([]);
 	const [isInitial, setIsInitial] = useState(true);
+	const [alertStatus, setAlertStatus] = useState<AlertStatusType>({message: "", type: ""});
 	const [favouritePokeNameArray, setFavouritePokeNameArray] = useState<string[]>(
 		localStorage.favouritePokeNameArray !== undefined &&
 		typeof (JSON.parse(localStorage.favouritePokeNameArray)[0]) === "string" ?
@@ -34,7 +40,9 @@ const AppContextProvider: React.FC<any> = ({ children }) => {
 		setActiveFilterArray,
 		favouritePokeNameArray,
 		setFavouritePokeNameArray,
-		typeColorObject
+		typeColorObject,
+		alertStatus,
+		setAlertStatus
 	};
 
 	return (
