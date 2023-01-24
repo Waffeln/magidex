@@ -9,7 +9,7 @@ const Home = ()=> {
 	return (
 		<>
 			<Box sx={{display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: "50px", textAlign: "center"}}>
-				<Box component={"h1"}> {"Welcome to MagiDex,"} </Box>
+				<Box component={"h1"} id={"welcome"} > {"Welcome to MagiDex,"} </Box>
 				<Box component={"h2"}> {"click on the Button on the top-left to open the Sidebar, where you can navigate through the app!"} </Box>
 				<Box component={"img"} src={MagiDexImage} alt={"MagiDex"}  sx={{width: "30%", bottom:"50px", position: "absolute", alignSelf: "center"}} />
 			</Box>
