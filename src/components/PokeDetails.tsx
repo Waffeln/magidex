@@ -1,9 +1,10 @@
 import React, {useContext, useEffect, useState} from "react";
 import { useParams} from "react-router-dom";
-import {Box, Button, Grid, Paper, SxProps} from "@mui/material";
+import {Box, Button, Grid, Paper, SxProps, TextField} from "@mui/material";
 import PokeNotFound from "./PokeNotFound";
 import Pokedex, {EvolutionChain, Pokemon} from "pokedex-promise-v2";
 import {AppContext} from "../context/AppContext";
+import {DataGrid} from "@mui/x-data-grid";
 
 interface PresentationStateType {
 	isShiny: boolean,
@@ -89,19 +90,72 @@ const PokeDetails = ()=> {
 						} sx={buttonStyle}> {!presentationState.isFront ? "FRONT" : "BACK"} </Button>
 					</Box>
 				</Box>
-				<Box sx={{width: "320px"}}>
-					Stats:
-					<Grid container spacing={1} direction={"column"}>
-						{focusedPokemen.stats.map((el, idx)=>(
-							<Grid key={el.stat.name} item xs={3} sx={{
-								display: "flex",
-								justifyContent: "space-between",
-								height: "50px",
-							}}>
-								<Box sx={{backgroundColor: idx % 2===1 ? "#d5d5d5" : "#b5b5b5", width: "100%"}}>{el.stat.name.replace("-", " ").toUpperCase()}:</Box>
-								<Box sx={{backgroundColor: idx % 2===1 ? "#d5d5d5" : "#b5b5b5"}}>{el.base_stat} </Box>
-							</Grid>))}
-					</Grid>
+				<Box sx={{display: "flex", justifyContent: "space-between"}}>
+					<Box sx={{width: "320px"}}>
+						Stats:
+						<Grid container spacing={1} direction={"column"}>
+							{focusedPokemen.stats.map((el, idx)=>(
+								<Grid key={el.stat.name} item xs={3} sx={{
+									display: "flex",
+									justifyContent: "space-between",
+									height: "50px",
+								}}>
+									<Box sx={{backgroundColor: idx % 2===1 ? "#d5d5d5" : "#b5b5b5", width: "100%"}}>{el.stat.name.replace("-", " ").toUpperCase()}:</Box>
+									<Box sx={{backgroundColor: idx % 2===1 ? "#d5d5d5" : "#b5b5b5"}}>{el.base_stat} </Box>
+								</Grid>))}
+						</Grid>
+					</Box>
+					<Box sx={{width: "320px"}}>
+						Abilities:
+						{focusedPokemen.abilities.map((el, idx)=> (
+							<Box key={el.ability.name} sx={{backgroundColor: idx % 2===1 ? "#d5d5d5" : "#b5b5b5", width: "100%"}}>
+								{el.ability.name}
+							</Box>
+						))}
+					</Box>
+				</Box>
+				<Box sx={{ height: "800px", width: "100%"}}>
+					Moves:
+
+					<DataGrid rows={focusedPokemen.moves.map((el, idx)=> {
+						return {
+							id: idx+1,
+							moveName: el.move.name,
+							learnedBy: el.version_group_details[el.version_group_details.length - 1].move_learn_method.name,
+							versions: (()=> {
+								let resultName = "";
+								el.version_group_details.forEach((el2, idx) => {
+									resultName += el2.version_group.name;
+									if(idx < el.version_group_details.length-1) resultName+= ", ";
+								});
+								return resultName;
+							})()
+						};
+					})} columns={
+						[
+							{
+								field: "id", headerName: "ID", width: 70
+							},
+							{
+								field: "moveName", headerName: "Move", width: 150
+							},
+							{
+								field: "learnedBy", headerName: "Learned by", width: 150
+							},
+							{
+								field: "versions", headerName: "Versions", width: 1000, renderCell: (cellValues) => {
+									return (
+										<TextField
+											sx={{width: 1000, border: "none"}}
+											variant={"standard"}
+											value={cellValues.row.versions}
+											InputProps={{ disableUnderline: true, readOnly: true }}
+											multiline
+										/>
+									);
+								}
+							}
+						]} pageSize={20} rowsPerPageOptions={[20]} rowHeight={100} />)
 				</Box>
 			</Paper> :  <PokeNotFound pokename={params.pokename} />}
 		</>
