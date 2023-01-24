@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import Sidebar from "../ui_components/Sidebar";
 import {AppContext} from "../context/AppContext";
 import Pokedex, { Pokemon, PokemonEntry} from "pokedex-promise-v2";
-import {Box, Button, List, ListItem, TextField} from "@mui/material";
+import {Box, Button, List, ListItem, Pagination, TextField} from "@mui/material";
 import PokeListItem from "./PokeListItem";
 import FilterPokemon from "./FilterPokemon";
 
@@ -11,6 +11,7 @@ const PokeList = ()=> {
 	const pokeDex = new Pokedex;
 	const [filteredPokeList, setFilteredPokeList] = useState<Pokemon[]>([]);
 	const [searchInput, setSearchInput] = useState("");
+	const [pokeListPage, setPokeListPage] = useState(1);
 
 	const handleChange = (searchWord: string) => {
 		console.log(searchWord);
@@ -35,8 +36,7 @@ const PokeList = ()=> {
 				return el.toLowerCase().startsWith(searchWord.toLowerCase());
 			});
 
-			//TODO: 20 per tab instead of only 20
-			filteredPokeNames.slice(0, 20).forEach((el: string)=> {
+			filteredPokeNames.slice(0, 40).forEach((el: string)=> {
 				pokePromiseArray.push(pokeDex.getPokemonByName(el));
 			});
 
@@ -65,13 +65,14 @@ const PokeList = ()=> {
 				<FilterPokemon />
 				<TextField id="search-pokemon-text-field" label="Pokemon name..." variant="outlined" sx={{marginLeft: "20px"}} onChange={event => setSearchInput(event.target.value)}/>
 			</>}>
-				<List sx={{display: "flex", flexDirection: "column"}}>
-					{filteredPokeList.map((el) => (
+				<List sx={{display: "flex", flexDirection: "column"}} >
+					{filteredPokeList.slice((pokeListPage - 1)*10, pokeListPage*10).map((el) => (
 						<ListItem key={el.name}>
 							<PokeListItem pokemon={el} />
 						</ListItem>
 					))}
 				</List>
+				<Pagination count={Math.ceil(filteredPokeList.length / 10)} onChange={(event, page) => setPokeListPage(page)} />
 			</Sidebar>
 		</>
 	);
