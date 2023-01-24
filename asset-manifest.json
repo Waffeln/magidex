@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/magidex/static/css/main.073c9b0a.css",
-    "main.js": "/magidex/static/js/main.e44bd0f4.js",
+    "main.js": "/magidex/static/js/main.fb12bb46.js",
     "static/js/787.277f5a50.chunk.js": "/magidex/static/js/787.277f5a50.chunk.js",
     "static/media/DeadMagiDex.png": "/magidex/static/media/DeadMagiDex.86fcb1e53c2e84960144.png",
     "static/media/MagiDexMascot.png": "/magidex/static/media/MagiDexMascot.2eae13e2306ce6707fcf.png",
     "index.html": "/magidex/index.html",
     "main.073c9b0a.css.map": "/magidex/static/css/main.073c9b0a.css.map",
-    "main.e44bd0f4.js.map": "/magidex/static/js/main.e44bd0f4.js.map",
+    "main.fb12bb46.js.map": "/magidex/static/js/main.fb12bb46.js.map",
     "787.277f5a50.chunk.js.map": "/magidex/static/js/787.277f5a50.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.e44bd0f4.js"
+    "static/js/main.fb12bb46.js"
   ]
 }
