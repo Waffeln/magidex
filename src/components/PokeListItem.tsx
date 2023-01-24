@@ -40,7 +40,7 @@ const PokeListItem = (props: PokeListItemProps)=> {
 					{appContext.favouritePokeNameArray.includes(props.pokemon.name) ? <FavoriteIcon sx={{color: "#f77"}} /> : <FavoriteBorderIcon/>}
 				</IconButton>
 				<IconButton>
-					<Link title={"Get more info about " + props.pokemon.name + "!"} href={"/pokedetails/" + props.pokemon.name}>
+					<Link title={"Get more info about " + props.pokemon.name + "!"} href={`${process.env.PUBLIC_URL}/#/pokedetails/` + props.pokemon.name}>
 						<CropFreeIcon />
 					</Link>
 				</IconButton>

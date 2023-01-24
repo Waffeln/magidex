@@ -59,8 +59,8 @@ const PokeList = ()=> {
 		<>
 			<Sidebar headerContent={<>
 				<Box sx={{position: "absolute", top:"5px", left: "100px", display: "flex", fontSize: "1.2em", gap: "10px"}}>
-					<Button href={"/"}>Home</Button>
-					<Button href={"/favourite"}>Favourites</Button>
+					<Button href={`${process.env.PUBLIC_URL}/#/`}>Home</Button>
+					<Button href={`${process.env.PUBLIC_URL}/#/favourite`}>Favourites</Button>
 				</Box>
 				<FilterPokemon />
 				<TextField id="search-pokemon-text-field" label="Pokemon name..." variant="outlined" sx={{marginLeft: "20px"}} onChange={event => setSearchInput(event.target.value)}/>

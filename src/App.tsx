@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import PokeList from "./components/PokeList";
 import FavouritePokeList from "./components/FavouritePokeList";
 import { createTheme, CssBaseline, ThemeProvider} from "@mui/material";
@@ -19,7 +19,7 @@ function App() {
 			<AppContextProvider>
 				<ThemeProvider theme={appTheme}>
 					<CssBaseline />
-					<BrowserRouter>
+					<HashRouter>
 						<AlertHandler />
 						<PokeList />
 						<Routes>
@@ -29,7 +29,7 @@ function App() {
 							<Route path={"/favourite"} element={<FavouritePokeList />}/>
 							<Route path={"*"} element={<PokeNotFound />} />
 						</Routes>
-					</BrowserRouter>
+					</HashRouter>
 				</ThemeProvider>
 			</AppContextProvider>
 		</>

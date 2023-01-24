@@ -2,6 +2,7 @@
   "name": "magidex",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://waffeln.github.io/magidex/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -25,7 +26,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -50,21 +53,24 @@
       "^.+\\.(ts|tsx)$": "ts-jest",
       "^.+\\.(js|jsx)$": "babel-jest"
     },
-    "transformIgnorePatterns": ["//node_modules/"]
+    "transformIgnorePatterns": [
+      "//node_modules/"
+    ]
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
+    "@types/enzyme": "^3.10.12",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
     "babel-jest": "^29.3.1",
     "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.7",
     "eslint": "^8.32.0",
     "eslint-plugin-react": "^7.32.1",
-    "ts-jest": "^29.0.5",
-    "@types/enzyme": "^3.10.12",
-    "enzyme-adapter-react-16": "^1.15.7",
-    "@types/enzyme-adapter-react-16": "^1.0.6"
+    "gh-pages": "^5.0.0",
+    "ts-jest": "^29.0.5"
   }
 }
