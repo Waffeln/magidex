@@ -6,7 +6,7 @@ const theme = {
 					backgroundColor: "#ff8200",
 					color: "#fff",
 					"&:hover": {
-						backgroundColor: "#777"
+						backgroundColor: "rgba(119, 119, 119, 0.6)"
 					},
 				}
 			}
