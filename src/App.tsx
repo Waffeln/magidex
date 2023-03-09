@@ -10,6 +10,7 @@ import PokeDetails from "./components/PokeDetails";
 import PokeNotFound from "./components/PokeNotFound";
 import Home from "./components/Home";
 import AlertHandler from "./components/AlertHandler";
+import Header from "./components/Header";
 
 function App() {
 	const appTheme = createTheme(theme);
@@ -21,6 +22,7 @@ function App() {
 					<CssBaseline />
 					<HashRouter>
 						<AlertHandler />
+						<Header />
 						<PokeList />
 						<Routes>
 							<Route path={"/"} element={<Home />} />

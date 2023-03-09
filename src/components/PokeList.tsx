@@ -1,17 +1,18 @@
 import React, {useContext, useEffect, useState} from "react";
 import Sidebar from "../ui_components/Sidebar";
 import {AppContext} from "../context/AppContext";
-import Pokedex, { Pokemon, PokemonEntry} from "pokedex-promise-v2";
-import {Box, Button, List, ListItem, Pagination, TextField} from "@mui/material";
+import PokeDex, {Pokedex ,Pokemon, PokemonEntry} from "pokedex-promise-v2";
+import {List, ListItem, Pagination, TextField} from "@mui/material";
 import PokeListItem from "./PokeListItem";
 import FilterPokemon from "./FilterPokemon";
 
 const PokeList = ()=> {
 	const appContext = useContext(AppContext);
-	const pokeDex = new Pokedex;
+	const pokeDex = new PokeDex;
 	const [filteredPokeList, setFilteredPokeList] = useState<Pokemon[]>([]);
 	const [searchInput, setSearchInput] = useState("");
 	const [pokeListPage, setPokeListPage] = useState(1);
+	const itemsPerPage = 6;
 
 	const handleChange = (searchWord: string) => {
 		console.log(searchWord);
@@ -20,7 +21,7 @@ const PokeList = ()=> {
 	};
 
 	const getPokemon = (searchWord: string) => {
-		const promiseArray: Promise<any>[] = [];
+		const promiseArray: Promise<Pokedex>[] = [];
 		const pokePromiseArray: Promise<Pokemon>[] = [];
 		const result: Pokemon[] = [];
 
@@ -58,21 +59,22 @@ const PokeList = ()=> {
 	return (
 		<>
 			<Sidebar headerContent={<>
-				<Box sx={{position: "absolute", top:"5px", left: "100px", display: "flex", fontSize: "1.2em", gap: "10px"}}>
-					<Button href={`${process.env.PUBLIC_URL}/#/`}>Home</Button>
-					<Button href={`${process.env.PUBLIC_URL}/#/favourite`}>Favourites</Button>
-				</Box>
+				<TextField id="search-pokemon-text-field" label="Pokemon name..." variant="outlined" sx={{
+					margin: "0 10px 0 10px",
+					width: "190px",
+					backgroundColor: "#fff"
+				}} onChange={event => setSearchInput(event.target.value)}/>
 				<FilterPokemon />
-				<TextField id="search-pokemon-text-field" label="Pokemon name..." variant="outlined" sx={{marginLeft: "20px"}} onChange={event => setSearchInput(event.target.value)}/>
 			</>}>
 				<List sx={{display: "flex", flexDirection: "column"}} >
-					{filteredPokeList.slice((pokeListPage - 1)*10, pokeListPage*10).map((el) => (
+					{filteredPokeList.slice((pokeListPage - 1)*itemsPerPage, pokeListPage*itemsPerPage).map((el) => (
 						<ListItem key={el.name}>
 							<PokeListItem pokemon={el} />
 						</ListItem>
 					))}
 				</List>
-				<Pagination count={Math.ceil(filteredPokeList.length / 10)} onChange={(event, page) => setPokeListPage(page)} />
+				<Pagination count={Math.ceil(filteredPokeList.length / itemsPerPage)} onChange={
+					(event, page) => setPokeListPage(page)} boundaryCount={0} siblingCount={1} sx={{position: "absolute", bottom: "10px"}} />
 			</Sidebar>
 		</>
 	);
