@@ -12,6 +12,7 @@ const PokeList = ()=> {
 	const [filteredPokeList, setFilteredPokeList] = useState<Pokemon[]>([]);
 	const [searchInput, setSearchInput] = useState("");
 	const [pokeListPage, setPokeListPage] = useState(1);
+	const itemsPerPage = 6;
 
 	const handleChange = (searchWord: string) => {
 		console.log(searchWord);
@@ -66,13 +67,14 @@ const PokeList = ()=> {
 				<FilterPokemon />
 			</>}>
 				<List sx={{display: "flex", flexDirection: "column"}} >
-					{filteredPokeList.slice((pokeListPage - 1)*10, pokeListPage*10).map((el) => (
+					{filteredPokeList.slice((pokeListPage - 1)*itemsPerPage, pokeListPage*itemsPerPage).map((el) => (
 						<ListItem key={el.name}>
 							<PokeListItem pokemon={el} />
 						</ListItem>
 					))}
 				</List>
-				<Pagination count={Math.ceil(filteredPokeList.length / 10)} onChange={(event, page) => setPokeListPage(page)} />
+				<Pagination count={Math.ceil(filteredPokeList.length / itemsPerPage)} onChange={
+					(event, page) => setPokeListPage(page)} boundaryCount={0} siblingCount={1} sx={{position: "absolute", bottom: "10px"}} />
 			</Sidebar>
 		</>
 	);

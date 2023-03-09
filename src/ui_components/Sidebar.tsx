@@ -15,7 +15,7 @@ const Sidebar = (props: SidebarProps) => {
 	const [isOpen, setIsOpen] = useState(true);
 	const drawerStyle = {
 		height: "100%",
-		width: "350px",
+		width: "320px",
 		zIndex: 300,
 		...props.sx
 	};
@@ -41,7 +41,7 @@ const Sidebar = (props: SidebarProps) => {
 			</IconButton>
 			<Drawer sx={drawerStyle} open={isOpen} PaperProps={{
 				className: "paperStyle",
-				sx: {zIndex: 300, backgroundColor: theme.palette.primary.main}
+				sx: {zIndex: 300, backgroundColor: theme.palette.primary.main, maxWidth: "320px"}
 			}} variant={"persistent"}>
 				<Box sx={{
 					paddingTop: "10px",
