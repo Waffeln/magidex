@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import {Pokemon} from "pokedex-promise-v2";
 import {Box, IconButton, Link} from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import CropFreeIcon from "@mui/icons-material/CropFree";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import {AppContext} from "../context/AppContext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
@@ -29,7 +29,7 @@ const PokeListItem = (props: PokeListItemProps)=> {
 				{props.pokemon.types.map((el)=> <Box sx={{ color: "#fff", backgroundColor: appContext.typeColorObject[el.type.name],
 					width:"80px", textAlign: "center", borderRadius: "8px", marginBottom: "5px" }} key={el.type.name}> {el.type.name.toUpperCase()} </Box>)}
 			</Box>
-			<Box sx={{ textAlign: "right"}}>
+			<Box sx={{ textAlign: "right", paddingTop: "3px"}}>
 				<IconButton onClick={()=> {
 					appContext.favouritePokeNameArray.includes(props.pokemon.name) ?
 						appContext.setFavouritePokeNameArray(appContext.favouritePokeNameArray.filter((el: string) => el !== props.pokemon.name))
@@ -41,7 +41,7 @@ const PokeListItem = (props: PokeListItemProps)=> {
 				</IconButton>
 				<IconButton>
 					<Link title={"Get more info about " + props.pokemon.name + "!"} href={`${process.env.PUBLIC_URL}/#/pokedetails/` + props.pokemon.name}>
-						<CropFreeIcon />
+						<InfoOutlinedIcon />
 					</Link>
 				</IconButton>
 			</Box>
