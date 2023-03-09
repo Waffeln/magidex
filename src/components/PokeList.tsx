@@ -74,7 +74,13 @@ const PokeList = ()=> {
 					))}
 				</List>
 				<Pagination count={Math.ceil(filteredPokeList.length / itemsPerPage)} onChange={
-					(event, page) => setPokeListPage(page)} boundaryCount={0} siblingCount={1} sx={{position: "absolute", bottom: "10px"}} />
+					(event, page) => setPokeListPage(page)
+				} boundaryCount={0} siblingCount={1} sx={{
+					position: "absolute",
+					width: "100%",
+					bottom: "10px",
+					backgroundColor: "rgba(200, 200, 200, 0.7)"
+				}} />
 			</Sidebar>
 		</>
 	);
