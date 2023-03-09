@@ -1,21 +1,34 @@
 import React from "react";
 import {Box, Button} from "@mui/material";
 import theme from "../theme";
+import MagiDexIcon from "../assets/MagiDexMascot.png";
 
 const Header = () => {
 
+	const buttonStyle = {
+		fontSize: "1.4em",
+	};
+	const buttonContainerStyle = {
+		display: "flex",
+		justifyContent: "space-around",
+	};
+
 	return <>
 		<Box sx={{
+			display: "flex",
+			justifyContent: "space-around",
 			height: "50px",
 			width: "100%",
 			backgroundColor: theme.palette.primary.main,
-			display: "flex",
-			justifyContent:
-				"space-around",
 			zIndex: 200,
 		}}>
-			<Button href={`${process.env.PUBLIC_URL}/#/`}>Home</Button>
-			<Button href={`${process.env.PUBLIC_URL}/#/favourite`}>Favourites</Button>
+			<Box sx={buttonContainerStyle}>
+				<Button sx={buttonStyle} href={`${process.env.PUBLIC_URL}/#/`}>Home</Button>
+			</Box>
+			<Box sx={{display: "flex", alignItems: "center", fontSize: "1.8em", color:"#fff"}}><Box component={"img"} src={MagiDexIcon} sx={{height: "40px"}} /> MagiDex</Box>
+			<Box sx={buttonContainerStyle}>
+				<Button sx={buttonStyle} href={`${process.env.PUBLIC_URL}/#/favourite`}>Favourites</Button>
+			</Box>
 		</Box>
 	</>;
 };
