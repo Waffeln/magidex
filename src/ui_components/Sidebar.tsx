@@ -11,17 +11,15 @@ interface SidebarProps {
 }
 
 const Sidebar = (props: SidebarProps) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(true);
 	const drawerStyle = {
 		height: "100%",
 		width: "350px",
-		zIndex: 105,
+		zIndex: 300,
 		...props.sx
 	};
 
-	const handleDrawerOpen = () => {
-		setIsOpen(!isOpen);
-	};
+	const handleDrawerOpen = () => setIsOpen(!isOpen);
 
 	return (
 		<>
@@ -29,22 +27,21 @@ const Sidebar = (props: SidebarProps) => {
 				onClick={handleDrawerOpen}
 				sx={{
 					top:"0px",
+					zIndex: 310,
 					position: "absolute",
 					padding: "20px",
 					height: "50px",
 					width: "50px",
-					zIndex: 110,
 					backgroundColor: "#ddd",
 					borderRadius: 0,
+					"&:hover": {
+						backgroundColor: "#acacac"
+					}
 				}}
 			>
 				{isOpen ? <ArrowBackIosNewIcon/> : <ArrowForwardIosIcon/>}
 			</IconButton>
-			<Drawer sx={drawerStyle} open={isOpen} PaperProps={{
-				sx: {
-					width: drawerStyle.width
-				}
-			}}>
+			<Drawer sx={drawerStyle} open={isOpen} PaperProps={{sx: {zIndex: 300}}} variant={"persistent"}>
 				<Box sx={{
 					paddingTop: "65px",
 					paddingLeft: "10px",
