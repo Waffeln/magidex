@@ -33,19 +33,16 @@ const Sidebar = (props: SidebarProps) => {
 					height: "50px",
 					width: "50px",
 					borderRadius: 0,
-					color: "#fff",
-					"&:hover": {
-						backgroundColor: "#acacac"
-					}
+					color: isOpen ? "#555" : "#fff",
 				}}
 			>
 				{isOpen ? <ArrowBackIosNewIcon/> : <ArrowForwardIosIcon/>}
 			</IconButton>
 			<Drawer sx={drawerStyle} open={isOpen} PaperProps={{sx: {zIndex: 300}}} variant={"persistent"}>
 				<Box sx={{
-					paddingTop: "65px",
-					paddingLeft: "10px",
-					minHeight: "140px",
+					paddingTop: "10px",
+					paddingLeft: "50px",
+					minHeight: "80px",
 					backgroundColor: "#ddd",
 				}}>
 					{props.headerContent}

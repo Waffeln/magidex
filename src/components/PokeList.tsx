@@ -58,8 +58,8 @@ const PokeList = ()=> {
 	return (
 		<>
 			<Sidebar headerContent={<>
+				<TextField id="search-pokemon-text-field" label="Pokemon name..." variant="outlined" sx={{margin: "0 10px 0 10px", width: "190px"}} onChange={event => setSearchInput(event.target.value)}/>
 				<FilterPokemon />
-				<TextField id="search-pokemon-text-field" label="Pokemon name..." variant="outlined" sx={{marginLeft: "20px"}} onChange={event => setSearchInput(event.target.value)}/>
 			</>}>
 				<List sx={{display: "flex", flexDirection: "column"}} >
 					{filteredPokeList.slice((pokeListPage - 1)*10, pokeListPage*10).map((el) => (
