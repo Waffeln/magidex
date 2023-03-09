@@ -1,14 +1,14 @@
 import React, {useContext, useEffect, useState} from "react";
 import Sidebar from "../ui_components/Sidebar";
 import {AppContext} from "../context/AppContext";
-import Pokedex, { Pokemon, PokemonEntry} from "pokedex-promise-v2";
-import {Box, Button, List, ListItem, Pagination, TextField} from "@mui/material";
+import PokeDex, {Pokedex ,Pokemon, PokemonEntry} from "pokedex-promise-v2";
+import {List, ListItem, Pagination, TextField} from "@mui/material";
 import PokeListItem from "./PokeListItem";
 import FilterPokemon from "./FilterPokemon";
 
 const PokeList = ()=> {
 	const appContext = useContext(AppContext);
-	const pokeDex = new Pokedex;
+	const pokeDex = new PokeDex;
 	const [filteredPokeList, setFilteredPokeList] = useState<Pokemon[]>([]);
 	const [searchInput, setSearchInput] = useState("");
 	const [pokeListPage, setPokeListPage] = useState(1);
@@ -20,7 +20,7 @@ const PokeList = ()=> {
 	};
 
 	const getPokemon = (searchWord: string) => {
-		const promiseArray: Promise<any>[] = [];
+		const promiseArray: Promise<Pokedex>[] = [];
 		const pokePromiseArray: Promise<Pokemon>[] = [];
 		const result: Pokemon[] = [];
 
@@ -58,10 +58,6 @@ const PokeList = ()=> {
 	return (
 		<>
 			<Sidebar headerContent={<>
-				<Box sx={{position: "absolute", top:"5px", left: "100px", display: "flex", fontSize: "1.2em", gap: "10px"}}>
-					<Button href={`${process.env.PUBLIC_URL}/#/`}>Home</Button>
-					<Button href={`${process.env.PUBLIC_URL}/#/favourite`}>Favourites</Button>
-				</Box>
 				<FilterPokemon />
 				<TextField id="search-pokemon-text-field" label="Pokemon name..." variant="outlined" sx={{marginLeft: "20px"}} onChange={event => setSearchInput(event.target.value)}/>
 			</>}>

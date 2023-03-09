@@ -32,8 +32,8 @@ const Sidebar = (props: SidebarProps) => {
 					padding: "20px",
 					height: "50px",
 					width: "50px",
-					backgroundColor: "#ddd",
 					borderRadius: 0,
+					color: "#fff",
 					"&:hover": {
 						backgroundColor: "#acacac"
 					}
