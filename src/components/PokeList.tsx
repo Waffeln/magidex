@@ -58,7 +58,11 @@ const PokeList = ()=> {
 	return (
 		<>
 			<Sidebar headerContent={<>
-				<TextField id="search-pokemon-text-field" label="Pokemon name..." variant="outlined" sx={{margin: "0 10px 0 10px", width: "190px"}} onChange={event => setSearchInput(event.target.value)}/>
+				<TextField id="search-pokemon-text-field" label="Pokemon name..." variant="outlined" sx={{
+					margin: "0 10px 0 10px",
+					width: "190px",
+					backgroundColor: "#fff"
+				}} onChange={event => setSearchInput(event.target.value)}/>
 				<FilterPokemon />
 			</>}>
 				<List sx={{display: "flex", flexDirection: "column"}} >

@@ -1,7 +1,6 @@
 import React, {useContext} from "react";
 import {Pokemon} from "pokedex-promise-v2";
 import {Box, IconButton, Link} from "@mui/material";
-import theme from "../theme";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CropFreeIcon from "@mui/icons-material/CropFree";
 import {AppContext} from "../context/AppContext";
@@ -19,9 +18,10 @@ const PokeListItem = (props: PokeListItemProps)=> {
 			width: "280px",
 			padding: "5px",
 			border: "3px solid",
-			borderColor: theme.palette.primary.main,
+			borderColor: "#c23",
 			borderRadius: "10px",
 			display: "flex",
+			backgroundColor: "#fff"
 		}}>
 			<Box component={"img"} sx={{height: "90px", width: "90px"}} src={props.pokemon.sprites.front_default as string} />
 			<Box sx={{width: "120px"}}>
