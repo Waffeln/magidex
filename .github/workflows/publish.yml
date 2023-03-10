@@ -16,4 +16,4 @@ jobs:
       - run: yarn build
       - run: yarn deploy
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.github_token }}
