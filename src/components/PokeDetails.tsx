@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import { useParams} from "react-router-dom";
 import {Box, Button, Grid, Paper, SxProps, TextField} from "@mui/material";
 import PokeNotFound from "./PokeNotFound";
-import Pokedex, {EvolutionChain, Pokemon} from "pokedex-promise-v2";
+import Pokedex, {EvolutionChain, Other, Versions, Pokemon} from "pokedex-promise-v2";
 import {AppContext} from "../context/AppContext";
 import {DataGrid} from "@mui/x-data-grid";
 
@@ -11,6 +11,9 @@ interface PresentationStateType {
 	isFront: boolean,
 	isBoy: boolean,
 	gameVersion: string,
+}
+interface PokeSpriteIndexableType extends Pokedex.PokemonSprites{
+	[key: string]: string | null | Other | Versions
 }
 
 const paperStyle: SxProps = {
@@ -64,8 +67,7 @@ const PokeDetails = ()=> {
 		if(focusedPokemen === undefined) return;
 		Promise.all([pokeDex.getEvolutionChainById(focusedPokemen.id)]).then((value: EvolutionChain[]) => {
 			setEvolutionChain(value[0]);
-			console.log(value[0]);
-			console.log(focusedPokemen);
+			console.log(evolutionChain);
 		}).catch((error) => appContext.setAlertStatus({type: "error", message: error}));
 	}, [focusedPokemen]);
 
@@ -75,7 +77,7 @@ const PokeDetails = ()=> {
 				sx={paperStyle}>
 				<Box component={"h1"} sx={{top: "10px", position: "relative" ,textAlign: "center"}}>{focusedPokemen.name.toUpperCase()}</Box>
 				<Box sx={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-					<Box component={"img"}src={(focusedPokemen?.sprites as any)[(presentationState.isFront ? "front" : "back") + "_"
+					<Box component={"img"} src={(focusedPokemen?.sprites as PokeSpriteIndexableType)[(presentationState.isFront ? "front" : "back") + "_"
 					+ (presentationState.isShiny ? "shiny" : "default")] as string} sx={imageStyle} />
 					<Box>
 						{focusedPokemen.types.map((el)=> <Box sx={{ color: "#fff", backgroundColor: appContext.typeColorObject[el.type.name],

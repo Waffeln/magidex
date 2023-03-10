@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import {Box, Grid, List} from "@mui/material";
+import {Box, Grid} from "@mui/material";
 import {AppContext} from "../context/AppContext";
 import PokeListItem from "./PokeListItem";
 import Pokedex, {Pokemon} from "pokedex-promise-v2";

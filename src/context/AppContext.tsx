@@ -1,8 +1,12 @@
-import React, {createContext, useEffect, useLayoutEffect, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 import typeColor from "../assets/typeColor.json";
 
 interface PokeFilterType {
 	[PokeFilterName: string]: string
+}
+
+interface ContextProps {
+	children: React.ReactNode;
 }
 
 interface AlertStatusType {
@@ -14,9 +18,10 @@ interface TypeColorType {
 	[typeName: string]: string
 }
 
-const AppContext = createContext<any>(undefined);
+// eslint-disable-next-line
+const AppContext = createContext({} as any);
 
-const AppContextProvider: React.FC<any> = ({ children }) => {
+const AppContextProvider: React.FC<ContextProps> = ({ children }) => {
 	const [activeFilterArray, setActiveFilterArray] = useState<PokeFilterType[]>([]);
 	const [isInitial, setIsInitial] = useState(true);
 	const [alertStatus, setAlertStatus] = useState<AlertStatusType>({message: "", type: ""});
@@ -35,7 +40,7 @@ const AppContextProvider: React.FC<any> = ({ children }) => {
 		localStorage.setItem("favouritePokeNameArray", JSON.stringify(favouritePokeNameArray));
 	}, [favouritePokeNameArray]);
 
-	const value={
+	const value = {
 		activeFilterArray,
 		setActiveFilterArray,
 		favouritePokeNameArray,
