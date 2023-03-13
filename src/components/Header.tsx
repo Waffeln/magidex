@@ -2,6 +2,7 @@ import React from "react";
 import {Box, Button} from "@mui/material";
 import theme from "../theme";
 import MagiDexIcon from "../assets/MagiDexMascot.png";
+import config from "../config";
 
 const Header = () => {
 
@@ -23,11 +24,11 @@ const Header = () => {
 			zIndex: 200,
 		}}>
 			<Box sx={buttonContainerStyle}>
-				<Button sx={buttonStyle} href={`${process.env.PUBLIC_URL}/#/`}>Home</Button>
+				<Button sx={buttonStyle} href={config.pathToHome}>Home</Button>
 			</Box>
 			<Box sx={{display: "flex", alignItems: "center", fontSize: "1.8em", color:"#fff"}}><Box component={"img"} src={MagiDexIcon} sx={{height: "40px"}} /> MagiDex</Box>
 			<Box sx={buttonContainerStyle}>
-				<Button sx={buttonStyle} href={`${process.env.PUBLIC_URL}/#/favourite`}>Favourites</Button>
+				<Button sx={buttonStyle} href={config.pathToFavourites}>Favourites</Button>
 			</Box>
 		</Box>
 	</>;

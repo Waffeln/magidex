@@ -5,6 +5,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import {AppContext} from "../context/AppContext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import config from "../config";
 
 interface PokeListItemProps {
 	pokemon: Pokemon
@@ -40,7 +41,7 @@ const PokeListItem = (props: PokeListItemProps)=> {
 					{appContext.favouritePokeNameArray.includes(props.pokemon.name) ? <FavoriteIcon sx={{color: "#f77"}} /> : <FavoriteBorderIcon/>}
 				</IconButton>
 				<IconButton>
-					<Link title={"Get more info about " + props.pokemon.name + "!"} href={`${process.env.PUBLIC_URL}/#/pokedetails/` + props.pokemon.name}>
+					<Link title={"Get more info about " + props.pokemon.name + "!"} href={config.pathToPokeDetail + props.pokemon.name}>
 						<InfoOutlinedIcon />
 					</Link>
 				</IconButton>
